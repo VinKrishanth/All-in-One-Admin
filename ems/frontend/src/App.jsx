@@ -1,8 +1,17 @@
+import { Routes, Route, BrowserRouter, Navigate } from 'react-router-dom'
+import Login from './pages/Login'
+import AdminDashboard from './pages/AdminDashboard'
+import EmployeeDashboard from './pages/EmployeeDashboard'
 function App() {
   return (
-    <div className="flex justify-center items-center h-screen">
-      <h1 class="text-3xl font-bold text-blue-500 text-center">Hello, Tailwind!</h1>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Navigate to="/admin-dashboard" />}></Route>
+        <Route path="/login" element={<Login />}></Route>
+        <Route path="/admin-dashboard" element={<AdminDashboard />}></Route>
+        <Route path="/employee-dashboard" element={<EmployeeDashboard />}></Route>
+      </Routes>
+    </BrowserRouter>
   )
 }
 
