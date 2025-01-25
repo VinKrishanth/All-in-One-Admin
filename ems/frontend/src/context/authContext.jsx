@@ -1,4 +1,5 @@
 import React, {createContext, useContext, useEffect, useState } from 'react'
+import axios from 'axios'
 
 const userContext = createContext();
 export default function authContext({children}) {
@@ -21,6 +22,7 @@ export default function authContext({children}) {
                     }
                 }else{
                     setUser(null)
+                    setLoading(false)
                 }
             } catch (error) {
                 if(error.response && !error.response.data.error){

@@ -6,6 +6,7 @@
 /ems/frontend/.env
 /ems/server/.env
 *txt
+*tldr
 
 # backend
 /backend
