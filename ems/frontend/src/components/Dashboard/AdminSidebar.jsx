@@ -18,8 +18,8 @@ export default function AdminSidebar() {
                 <FaTachometerAlt />
                 <span>Dashboard</span>
             </NavLink>
-            <NavLink to="/admin-dashboard"
-                className={`flex justify-start space-x-4   py-2.5 px-4 rounded`}>
+            <NavLink to="/admin-dashboard/employees" 
+className={({isActive}) => `${isActive ? 'bg-teal-500 ': ' '} flex justify-start space-x-4   py-2.5 px-4 rounded`}>
                 <FaUser />
                 <span>Employee</span>
             </NavLink>
@@ -33,8 +33,8 @@ export default function AdminSidebar() {
                 <FaCalendar />
                 <span>Leave</span>
             </NavLink>
-            <NavLink to="/admin-dashboard"
-                className={`flex justify-start space-x-4   py-2.5 px-4 rounded`}>
+            <NavLink to="/admin-dashboard/salary/add"
+                className={({isActive}) => `${isActive ? 'bg-teal-500 ': ' '} flex justify-start space-x-4   py-2.5 px-4 rounded`}>
                 <FaMoneyBillWave />
                 <span>Salary</span>
             </NavLink>
