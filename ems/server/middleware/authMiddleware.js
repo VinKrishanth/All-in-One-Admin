@@ -21,7 +21,7 @@ const verifyUser = async (req, res, next) => {
             return res.status(403).json({ success: false, message: 'No token provided.' });
         }
     } catch (error) {
-        return res.status(500).json({ success: false, message: 'Server Error' });
+        return res.status(500).json({ success: false, message: 'Server Error' + error});
     }
 }
 
