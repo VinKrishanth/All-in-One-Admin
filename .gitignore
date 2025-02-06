@@ -2,9 +2,16 @@
 /ems/frontend/node_modules/
 /ems/server/node_modules/
 
+/lms/frontend_school/node_modules/
+/lms/server/node_modules/
+
 # Ignore .env files
 /ems/frontend/.env
 /ems/server/.env
+/lms/frontend_school/.env
+/lms/server/.env
+/lms/server/userSheet.js
+
 *txt
 *tldr
 
