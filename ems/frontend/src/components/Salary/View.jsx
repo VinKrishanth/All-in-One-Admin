@@ -92,7 +92,7 @@ export default function View() {
                         </table>
                         {filteredSalaries.length === 0 && <div className="p-2 bg-gray-300">
                                     <p colSpan={8}  className="flex justify-center items-center w-full text-center">No records</p>
-                                </div>}
+                        </div>}
                 </div>
                 )
             }

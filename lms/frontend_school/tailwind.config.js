@@ -9,6 +9,11 @@ export default {
         info: "#34495E",
         warning: "#FFA500",
         danger: "#E74C3C",
+        'sb-primary': "#152259",
+        'sb-secondary-dark': "#509CDB",
+        'sb-secondary-light': "#d1eb8b",
+        'txt-primary': "#8e9795",
+        'txt-secondary': "#c2c3c3",
       },
       fontFamily: {
         sans: ["Nunito", "sans-serif"],
