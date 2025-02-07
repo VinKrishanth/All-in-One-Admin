@@ -3,7 +3,7 @@ import { HiMenu } from "react-icons/hi";
 import SidebarMenu from './SidebarMenu'
 import Logo from './Logo'
 
-const Sidebar = () => {
+const Sidebar = ({navList = []}) => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const sidebarRef = useRef(null); 
 
@@ -66,7 +66,7 @@ const Sidebar = () => {
         <div className="h-full px-3 py-4 overflow-y-auto bg-sb-primary relative">
           <Logo />
           <ul className="space-y-2 font-medium py-4">
-            <SidebarMenu />
+            <SidebarMenu navList={navList} />
           </ul>
         </div>
       </aside> 

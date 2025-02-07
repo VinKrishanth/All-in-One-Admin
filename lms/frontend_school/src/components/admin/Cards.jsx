@@ -1,21 +1,18 @@
 import React from "react";
-import { PiStudentDuotone } from "react-icons/pi";
-import { FaChalkboardTeacher, FaAward } from "react-icons/fa";
-import { FaBookAtlas } from "react-icons/fa6";
 import { motion } from "framer-motion";
 
-// Card Animation Variants
+
 const cardVariants = {
-  hidden: { opacity: 0, scale: 0.8, y: 20 },  // Start position
+  hidden: { opacity: 0, scale: 0.8, y: 20 },  
   visible: (index) => ({
     opacity: 1,
     scale: 1,
     y: 0,
-    transition: { duration: 0.5, delay: index * 0.2 }, // Staggered delay
+    transition: { duration: 0.5, delay: index * 0.2 }, 
   }),
 };
 
-const Card = ({ title, subtitle, Icon, color, index }) => {
+const Card = ({ title, subtitle, Icon, color, index,  }) => {
   return (
     <motion.div
       variants={cardVariants}
@@ -36,13 +33,8 @@ const Card = ({ title, subtitle, Icon, color, index }) => {
   );
 };
 
-export default function Cards() {
-  const cardData = [
-    { title: "Students", subtitle: "1500", Icon: PiStudentDuotone, color: "text-blue-600" },
-    { title: "Teachers", subtitle: "75", Icon: FaChalkboardTeacher, color: "text-purple-500" },
-    { title: "Awards", subtitle: "210", Icon: FaAward, color: "text-orange-400" },
-    { title: "Books", subtitle: "3.5k", Icon: FaBookAtlas, color: "text-green-600" },
-  ];
+export default function Cards({cardData = []}) {
+
 
   return (
     <motion.div 

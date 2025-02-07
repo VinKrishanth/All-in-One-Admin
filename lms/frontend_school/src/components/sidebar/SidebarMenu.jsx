@@ -1,7 +1,6 @@
 import React from "react";
 import { NavLink, useLocation } from "react-router-dom";
 import { motion } from "framer-motion";
-import { AdminList } from "../../utils/NavigationLists"; 
 
 const listVariants = {
   hidden: { opacity: 0 },
@@ -18,7 +17,7 @@ const itemVariants = {
   visible: { opacity: 1, x: 0, transition: { duration: 0.3, ease: "easeOut" } },
 };
 
-export default function SidebarMenu() {
+export default function SidebarMenu({navList = []}) {
   const location = useLocation();
 
   return (
@@ -28,7 +27,7 @@ export default function SidebarMenu() {
       variants={listVariants}
       className="space-y-2"
     >
-      {AdminList.map(({ title, path, icon: Icon }, index) => (
+      {navList.map(({ title, path, icon: Icon }, index) => (
         <motion.div key={index} variants={itemVariants}>
           <NavLink
             to={path}

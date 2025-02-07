@@ -6,12 +6,13 @@ import { HiBellAlert } from "react-icons/hi2";
 import { useAuth } from "../context/AuthContext";
 import Profile from "../assets/image/demo-profile.png";
 import { motion } from "framer-motion";
+import { AdminList } from '../utils/NavigationLists'
 
 export default function AdminDashboard() {
   const { user } = useAuth();
   return (
     <div className="flex flex-col">
-      <Sidebar />
+      <Sidebar  navList={AdminList}/>
       <div className="sm:pl-64 ">
         <motion.div
           initial={{ opacity: 0, y: -20 }} 
