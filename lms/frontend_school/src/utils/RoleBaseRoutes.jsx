@@ -1,5 +1,5 @@
 import React from 'react'
-import { useAuth } from '../context/authContext'
+import { useAuth } from '../context/AuthContext'
 import { Navigate } from 'react-router-dom'
 import Loader from '../components/Loader/Loader'
 
@@ -11,7 +11,7 @@ export default function RoleBaseRoutes({ children, requiredRole }) {
     }
 
     if (!user) {
-        return <Navigate to="/login" />
+        return <Navigate to="/home" />
     }
 
     if (!requiredRole.includes(user.role)) {

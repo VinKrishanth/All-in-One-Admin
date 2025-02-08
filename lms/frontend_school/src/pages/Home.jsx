@@ -1,21 +1,46 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-
+import { motion } from 'framer-motion';
+import MainHome from '../components/home/MainHome';
+import SearchSection from '../components/home/SearchSection';
+import Footer from '../components/home/Footer';
+import TutorialAccessSection from '../components/home/TutorialAccessSection';
+import HeroSection from '../components/home/HeroSection';
 
 export default function Home() {
   const navigate = useNavigate();
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gradient-to-r from-teal-500 to-blue-500">
-      <div className="text-center text-white space-y-6">
-        <h1 className="text-5xl font-bold">Welcome to Our Platform</h1>
-        <p className="text-xl">Your journey to learning and success starts here!</p>
-        <button 
-          className="mt-4 px-6 py-2 text-lg bg-blue-600 text-white rounded-lg hover:bg-blue-800"
-          onClick={() => navigate(`/login`)}
-        >
-          Login
-        </button>
-      </div>
-    </div>
+    <motion.div 
+      initial={{ opacity: 0, y: -20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5 }}
+    >
+      <MainHome />
+      <motion.div 
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+        viewport={{ once: true }}
+      >
+        <SearchSection />
+      </motion.div>
+      <motion.div 
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+        viewport={{ once: true }}
+      >
+        <TutorialAccessSection />
+      </motion.div>
+      <motion.div 
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+        viewport={{ once: true }}
+      >
+        <HeroSection />
+      </motion.div>
+      <Footer />
+    </motion.div>
   );
 }

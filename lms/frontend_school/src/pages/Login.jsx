@@ -28,8 +28,6 @@ export default function Login() {
       const response = await axios.post(`${API_URL}/auth/login`, formData);
       if (response.data.success) {
         login(response.data.user, response.data.token);
-
-
         switch (response.data.user.role) {
           case "admin":
             navigate("/admin-dashboard");

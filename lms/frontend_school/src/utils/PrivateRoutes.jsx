@@ -1,5 +1,5 @@
 import React from 'react'
-import { useAuth } from '../context/authContext'
+import { useAuth } from '../context/AuthContext'
 import { Navigate } from 'react-router-dom'
 import Loader from '../components/Loader/Loader'
 
@@ -10,5 +10,5 @@ export default function PrivateRoutes({ children }) {
         return <Loader />
     }
 
-    return user ? children : <Navigate to="/login" />
+    return user ? children : <Navigate to="/home" />
 }
