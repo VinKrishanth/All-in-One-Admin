@@ -80,7 +80,7 @@ const Calendar = () => {
               initial={{ scale: 0.8, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               transition={{ delay: index * 0.02 }}
-              style={{ width: "30px", height: "30px" }} // Ensures a round shape
+              style={{ width: "30px", height: "30px" }} 
             >
               {day}
             </motion.div>

@@ -25,7 +25,7 @@ export default function SidebarMenu({navList = []}) {
       initial="hidden"
       animate="visible"
       variants={listVariants}
-      className="space-y-2"
+      className="space-y-2 overflow-hidden"
     >
       {navList.map(({ title, path, icon: Icon }, index) => (
         <motion.div key={index} variants={itemVariants}>

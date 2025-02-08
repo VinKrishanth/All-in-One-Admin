@@ -18,7 +18,7 @@ export default function TeacherDashboard() {
           initial={{ opacity: 0, y: -20 }} 
           animate={{ opacity: 1, y: 0 }} 
           transition={{ duration: 0.6, ease: "easeOut" }} 
-          className="hidden sm:flex justify-between gap-6 h-10 sm:items-center md:px-8 px-4 py-6 shadow-lg"
+          className="hidden sm:flex justify-between gap-6 h-10 sm:items-center md:px-8 px-4 py-8 shadow-lg"
         >
          
           <motion.div

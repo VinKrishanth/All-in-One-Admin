@@ -9,6 +9,7 @@ import StudentDashboard from '../pages/StudentDashboard'
 import AdminSummery from '../components/admin/AdminSummery'
 import TeacherList from '../components/admin/teachers/TeacherList'
 import StudentList from '../components/admin/students/StudentList'
+import Class from '../components/admin/Class'
 
 export default function Layouts() {
   return (
@@ -34,8 +35,9 @@ export default function Layouts() {
           <Route path={"/admin-dashboard/notice"}  element={<StudentList />}> </Route>
           <Route path={"/admin-dashboard/setting"}  element={<StudentList />}> </Route>
           <Route path={"/admin-dashboard/Attendance"}  element={<StudentList />}> </Route>
+          <Route path={"/admin-dashboard/class"}  element={<Class />}> </Route>
+          <Route path={"/admin-dashboard/subject"}  element={<StudentList />}> </Route>
         </Route>
-
         {/* teacher */}
         <Route path="/teacher-dashboard" element={
           <PrivateRoutes>

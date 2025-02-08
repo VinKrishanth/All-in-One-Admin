@@ -84,7 +84,7 @@ export default function DepartmentList() {
         </Link>
       </div>
       <div className="mt-5">
-        <DataTable columns={columns} data={filteredDepartments}  pagination/>
+        {/* <DataTable columns={columns} data={filteredDepartments}  pagination/> */}
       </div>
     </div>
     }</>

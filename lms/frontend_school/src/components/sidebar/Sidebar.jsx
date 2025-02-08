@@ -2,10 +2,13 @@ import React, { useState, useEffect, useRef } from "react";
 import { HiMenu } from "react-icons/hi";
 import SidebarMenu from './SidebarMenu'
 import Logo from './Logo'
-
+import IconButton from "../button/IconButton";
+import { IoLogOut } from "react-icons/io5";
+import { useAuth } from "../../context/AuthContext";
 const Sidebar = ({navList = []}) => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const sidebarRef = useRef(null); 
+  const { logout } = useAuth(); 
 
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
@@ -14,6 +17,7 @@ const Sidebar = ({navList = []}) => {
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (
+        window.innerWidth <= 768 &&
         sidebarRef.current &&
         !sidebarRef.current.contains(event.target) &&
         isSidebarOpen
@@ -32,8 +36,7 @@ const Sidebar = ({navList = []}) => {
   }, [isSidebarOpen]);
 
   return (
-    <div>
-
+    <div style={{ overflow: "hidden", maxHeight: "100vh" }}>
       <button
         data-drawer-target="sidebar-multi-level-sidebar"
         data-drawer-toggle="sidebar-multi-level-sidebar"
@@ -58,9 +61,9 @@ const Sidebar = ({navList = []}) => {
       <aside
         id="sidebar-multi-level-sidebar"
         ref={sidebarRef} 
-        className={`fixed top-0 left-0 z-40 w-64 h-screen transition-transform   ${
+        className={`fixed top-0 left-0 z-40 w-64 h-screen transition-transform    ${
           isSidebarOpen ? "translate-x-0" : "-translate-x-full"
-        } sm:translate-x-0 `}
+        } sm:translate-x-0  `}
         aria-label="Sidebar"
       >
         <div className="h-full px-3 py-4 overflow-y-auto bg-sb-primary relative">
@@ -68,6 +71,11 @@ const Sidebar = ({navList = []}) => {
           <ul className="space-y-2 font-medium py-4">
             <SidebarMenu navList={navList} />
           </ul>
+          <IconButton 
+            Icon={IoLogOut}
+            onClick={logout}
+            label={'Log Out'}
+          />
         </div>
       </aside> 
     </div>

@@ -14,6 +14,9 @@ export default function AdminSummery() {
         <AttendancePieChart />
         <Calendar />
       </div>
+      <div>
+        <h1>Welcome to your dashboard, Raavanaa Tutorial</h1>
+      </div>
     </div>
   )
 }

@@ -3,9 +3,9 @@ import { PiStudentDuotone, PiExamDuotone } from "react-icons/pi";
 import { HiBuildingLibrary } from "react-icons/hi2";
 import { LuNotepadText } from "react-icons/lu";
 import { GrNotes } from "react-icons/gr";
-import { IoSettings , IoLogOut } from "react-icons/io5";
-import {  FaAward , FaChalkboardTeacher } from "react-icons/fa";
-import { FaBookAtlas } from "react-icons/fa6";
+import { IoSettings } from "react-icons/io5";
+import {  FaAward , FaChalkboardTeacher, FaPenSquare } from "react-icons/fa";
+import { FaBookAtlas, FaRegAddressBook } from "react-icons/fa6";
 
 export const AdminList = [
   {
@@ -24,6 +24,18 @@ export const AdminList = [
     title: "Students",
     path: "/admin-dashboard/student",
     icon: PiStudentDuotone,
+    delay: 0.3,
+  },
+  {
+    title: "Class",
+    path: "/admin-dashboard/class",
+    icon: FaRegAddressBook,
+    delay: 0.3,
+  },
+  {
+    title: "Subject",
+    path: "/admin-dashboard/subject",
+    icon: FaPenSquare,
     delay: 0.3,
   },
   {
@@ -55,13 +67,7 @@ export const AdminList = [
     path: "/admin-dashboard/setting",
     icon: IoSettings,
     delay: 0.8,
-  },
-  {
-    title: "Logout",
-    path: "/login",
-    icon: IoLogOut,
-    delay: 0.8,
-  },
+  }
 ];
 
 export const TeacherList = [
@@ -100,13 +106,7 @@ export const TeacherList = [
     path: "/teacher-dashboard/setting",
     icon: IoSettings,
     delay: 0.8,
-  },
-  {
-    title: "Logout",
-    path: "/login",
-    icon: IoLogOut,
-    delay: 0.8,
-  },
+  }
 ];
 export const StudentList = [
   {
@@ -145,12 +145,6 @@ export const StudentList = [
     icon: IoSettings,
     delay: 0.8,
   },
-  {
-    title: "Logout",
-    path: "/login",
-    icon: IoLogOut,
-    delay: 0.8,
-  },
 ];
 
 export const cardData = [
@@ -172,6 +166,56 @@ export const cardData = [
     subtitle: "3.5k",
     Icon: FaBookAtlas,
     color: "text-green-600",
+  },
+];
+export const classCardData = [
+  {
+    title: "class",
+    subtitle: "01",
+  },
+  {
+    title: "class",
+    subtitle: "02",
+  },
+  {
+    title: "class",
+    subtitle: "03",
+  },
+  {
+    title: "class",
+    subtitle: "04",
+  },
+  {
+    title: "class",
+    subtitle: "05",
+  },
+  {
+    title: "class",
+    subtitle: "06",
+  },
+  {
+    title: "class",
+    subtitle: "07",
+  },
+  {
+    title: "class",
+    subtitle: "08",
+  },
+  {
+    title: "class",
+    subtitle: "09",
+  },
+  {
+    title: "class",
+    subtitle: "10",
+  },
+  {
+    title: "class",
+    subtitle: "11",
+  },
+  {
+    title: "class",
+    subtitle: "12/13",
   },
 ];
 
