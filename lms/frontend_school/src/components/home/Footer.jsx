@@ -10,7 +10,7 @@ export default function Footer() {
           whileInView={{ opacity: 1, y: 0 }} 
           transition={{ duration: 0.8 }}
           viewport={{ once: false, amount: 0.2 }}
-          className="grid grid-cols-1 md:grid-cols-4 gap-8"
+          className="grid grid-cols-1  md:grid-cols-4 gap-8"
         >
           <FooterNewsletter />
           <FooterLinks

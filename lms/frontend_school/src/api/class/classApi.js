@@ -16,7 +16,7 @@ export const getClasses = async () => {
     const response = await apiClient.get("/classes");
     return response.data;
   } catch (error) {
-    console.error("fetch class data : " ,error);
+    console.error("fetch class data : ", error);
     throw error;
   }
 };
