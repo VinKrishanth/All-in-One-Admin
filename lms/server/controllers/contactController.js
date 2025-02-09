@@ -6,32 +6,41 @@ import { fileURLToPath } from "url";
 
 dotenv.config();
 
-// Resolve __dirname in ES Module
+
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-// Nodemailer Transporter Configuration
+
 const transporter = nodemailer.createTransport({
-  service: "Gmail",
+  host: "smtp.gmail.com", 
+  port: 587,
+  secure: false,
   auth: {
     user: process.env.EMAIL_USER,
     pass: process.env.EMAIL_PASS,
   },
 });
 
-// Ensure required environment variables are set
+
+
 if (!process.env.EMAIL_USER || !process.env.EMAIL_PASS || !process.env.RECEIVER_EMAIL) {
   console.error("Missing required environment variables for email configuration.");
   process.exit(1);
 }
 
-// Contact Email Handler
+
 export const sendContactEmail = async (req, res) => {
   try {
     const { name, email, message } = req.body;
 
-    if (!name || !email || !message) {
-      return res.status(400).json({ success: false, message: "All fields are required" });
+    if (!name ) {
+      return res.status(400).json({ success: false, message: "Name field is required" });
+    }
+    if (!email) {
+      return res.status(400).json({ success: false, message: "Email field is required" });
+    }
+    if (!message) {
+      return res.status(400).json({ success: false, message: "Massage field is required" });
     }
 
     // Save Contact Data to Database
@@ -51,8 +60,7 @@ export const sendContactEmail = async (req, res) => {
         <p><strong>Name:</strong> ${name}</p>
         <p><strong>Email:</strong> ${email}</p>
         <p><strong>Message:</strong> ${message}</p>
-      `,
-      attachments: [{ filename: "RaavanaaLogo.png", path: logoPath }],
+      `
     });
 
     // Auto-Reply Email to User
@@ -79,7 +87,7 @@ export const sendContactEmail = async (req, res) => {
   }
 };
 
-// Update Contact Status to "Replied"
+
 export const updateContactStatus = async (req, res) => {
   try {
     const { id } = req.params;
@@ -98,7 +106,7 @@ export const updateContactStatus = async (req, res) => {
   }
 };
 
-// Get All Contacts for Admin Dashboard
+
 export const getAllContacts = async (req, res) => {
   try {
     const contacts = await Contact.find().sort({ createdAt: -1 });

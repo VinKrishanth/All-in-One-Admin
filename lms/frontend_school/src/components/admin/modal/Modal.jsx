@@ -27,7 +27,7 @@ export default function  Modal  ({ isOpen, onClose, header, body, footer, custom
           exit={{ opacity: 0 }}
         >
           <motion.div
-            className={`bg-white p-6 rounded-2xl shadow-xl  ${customStyles ? 'sm:w-[70%] -[90%]' : 'w-full max-w-md'}`}
+            className={`bg-white p-6 rounded-2xl shadow-xl  ${customStyles ? 'lg:w-[60%]  w-[90%]' : 'w-full max-w-md'}`}
             initial={{ y: 50, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             exit={{ y: -50, opacity: 0 }}

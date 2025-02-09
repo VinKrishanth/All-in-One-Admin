@@ -10,9 +10,9 @@ import View from "./View";
 export default function StudentList() {
   const [filteredStudents, setFilteredStudents] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [classData, setClassData] = useState({
-    className: "",
-    classSection: "",
+  const [studentData, setStudentData] = useState({
+    firstName: "",
+    lastName: "",
   });
 
   const handleCloseModal = () => {
@@ -91,8 +91,8 @@ export default function StudentList() {
         isOpen={isModalOpen}
         customStyles={true}
         onClose={handleCloseModal}
-        header={<h2 className="text-center">Add New Class</h2>}
-        body={<View onChange={handleChangeStudent} onSubmit={handleSubmit}/> }
+        header={<h2 className="text-center">Add New Student</h2>}
+        body={<View /> }
         footer={
           <div className="flex justify-end gap-4">
             <motion.button

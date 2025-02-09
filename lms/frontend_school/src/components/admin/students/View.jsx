@@ -1,8 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
-import TextInput from "../../input/TextInput";
+import AnimatedTextInput from "../../input/AnimatedTextInput";
+import FormInput from "../../input/FormInput";
 
-export default function View(onSubmit, onChange) {
+export default function View() {
+  const [studentData, setStudentData] = useState({
+    firstName: "",
+    lastName: "",
+  });
+
+  const handleChangeStudent = (e) => {
+    const { name, value } = e.target;
+    setStudentData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+  };
+  const handleStudentSubmit = (e) => {};
+
   return (
     <motion.form
       className="space-y-4 p-4 bg-white rounded-lg w-full "
@@ -10,22 +25,11 @@ export default function View(onSubmit, onChange) {
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -20 }}
       transition={{ duration: 0.3 }}
-      onSubmit={onSubmit}
+      onSubmit={handleStudentSubmit}
     >
-      <div className="grid sm:grid-cols-2 gap-2 w-full">
-        <TextInput
-            name="firstName"
-            placeholder="First Name"
-            value={``}
-            onChange={onChange}
-            className="w-full"
-        />
-        <TextInput
-            name="firstName"
-            placeholder="First Name"
-            value={``}
-            onChange={onChange}
-            className="w-full"
+      <div className={`grid sm:grid-cols-2 gap-2  max-w-2xl`}>
+        <FormInput 
+
         />
       </div>
     </motion.form>

@@ -8,7 +8,7 @@ export default function ContactForm() {
   const [contactData, setContactData] = useState({
     name: "",
     email: "",
-    massage: "",
+    message: "",
   });
 
   const handleChange = (event) => {
@@ -25,7 +25,7 @@ export default function ContactForm() {
         setContactData({
           name: "",
           email: "",
-          massage: "",
+          message: "",
         });
       } else {
         toast.error(response.message || "Something went wrong!");
@@ -122,8 +122,8 @@ export default function ContactForm() {
           <div>
             <label className="block text-gray-700 font-medium">Message</label>
             <motion.textarea
-              value={contactData.massage}
-              name="massage"
+              value={contactData.message}
+              name="message"
               className="w-full px-4 py-2 mt-1 border rounded-lg focus:ring-2 focus:ring-pink-500 focus:outline-none"
               rows="4"
               placeholder="Write your message..."
