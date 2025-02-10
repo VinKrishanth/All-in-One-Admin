@@ -1,36 +1,41 @@
 import React, { useState } from "react";
-import { motion } from "framer-motion";
+import StdProfile from "../../../assets/image/student-profile.png";
 import FormInput from "../../input/FormInput";
-import SelectField from "../../input/SelectField";
 import DateField from "../../input/DateField";
-import { FaRegEyeSlash, FaRegEye } from "react-icons/fa";
+import SelectField from "../../input/SelectField";
 import Textarea from "../../input/Textarea";
-import Checkbox from "../../input/Checkbox";
 
-export default function StudentForm({
-  studentData,
-  handleChangeStudent,
-  handleStudentSubmit,
-}) {
-  const [textHover, setTextHover] = useState(false);
-  const [isChecked, setIsChecked] = useState(false);
-  const handlePassword = () => setTextHover(!textHover);
+export default function StudentProfile() {
+  const [studentData, setStudentData] = useState({
+    firstName: "Krishanth",
+    lastName: "",
+    email: "krishanth@gmail.com",
+    gender: "male",
+    motherName: "Eashvari",
+    fatherName: "Vinayagamoorthi",
+    dateOfBirth: "2024-10-30",
+    role: "student",
+    joinDate: "2018-01-02",
+    address: "P/267, Panawatte No-04, Yatiyantota",
+    correspondenceAddress: "P/267, Panawatte No-04, Yatiyantota",
+    contactNumber: "0773235540",
+  });
 
+  const handleChangeStudent = (e) => {};
   return (
-    <motion.form
-      className="bg-white rounded-lg px-6 md:p-10 flex flex-col max-w-4xl mx-auto "
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: -20 }}
-      transition={{ duration: 0.3 }}
-      onSubmit={handleStudentSubmit}
-    >
-      <motion.div
-        initial={{ opacity: 0, y: 10 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.2 }}
-      >
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+    <div className="m-64 ">
+      <h1 className="text-3xl tracking-wider font-normal mb-8">
+        Student Profile
+      </h1>
+      <div className="space-y-4">
+        <div className="flex justify-center items-center mb-8">
+          <img
+            src={StdProfile}
+            alt="Student Profile"
+            className="h-36 w-36 border-2 rounded-xl drop-shadow-md cursor-pointer"
+          />
+        </div>
+        <div className="grid lg:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-4">
           <FormInput
             label="First Name"
             name="firstName"
@@ -59,21 +64,9 @@ export default function StudentForm({
             onChange={handleChangeStudent}
             required
           />
-          <FormInput
-            label="Password"
-            name="password"
-            type={textHover ? "text" : "password"}
-            value={studentData.password}
-            onChange={handleChangeStudent}
-            required
-            Icon={textHover ? FaRegEye : FaRegEyeSlash}
-            textHover={textHover}
-            onClick={handlePassword}
-          />
           <SelectField
             label="Gender"
             name="gender"
-            required={true}
             value={studentData.gender}
             onChange={handleChangeStudent}
             options={[
@@ -87,14 +80,12 @@ export default function StudentForm({
             name="fatherName"
             value={studentData.fatherName}
             onChange={handleChangeStudent}
-            required={true}
           />
           <FormInput
             label="Mother's Name"
             name="motherName"
             value={studentData.motherName}
             onChange={handleChangeStudent}
-            required={true}
           />
           <DateField
             label="Joining Date"
@@ -109,33 +100,15 @@ export default function StudentForm({
             value={studentData.contactNumber}
             onChange={handleChangeStudent}
           />
-          <div className="flex flex-col gap-4">
-            <Textarea
-              label="Permanent Address"
-              name="address"
-              value={studentData.address}
-              onChange={handleChangeStudent}
-              required
-            />
-            <Checkbox
-              label="Same As Permanent Address"
-              name="sameAddress"
-              checked={isChecked}
-              onChange={(e) => setIsChecked(e.target.checked)}
-            />
-          </div>
           <Textarea
-            label="Correspondence Address"
-            name="correspondenceAddress"
-            value={
-              isChecked
-                ? studentData.address
-                : studentData.correspondenceAddress
-            }
+            label="Permanent Address"
+            name="address"
+            value={studentData.address}
             onChange={handleChangeStudent}
+            required
           />
         </div>
-      </motion.div>
-    </motion.form>
+      </div>
+    </div>
   );
 }

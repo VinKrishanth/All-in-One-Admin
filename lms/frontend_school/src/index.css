@@ -1,3 +1,10 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+.toast-container {
+    margin: 2px;
+    padding: 1px;
+}
+  
