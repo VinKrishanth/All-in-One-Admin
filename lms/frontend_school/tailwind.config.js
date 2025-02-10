@@ -40,6 +40,7 @@ export default {
       },
       animation: {
         spin988: 'spin988 2s linear infinite',
+        "bounce-custom": "bounce 1.5s infinite ease-in-out",
       },
     },
   },

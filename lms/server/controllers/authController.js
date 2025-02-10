@@ -6,9 +6,17 @@ const login = async (req, res) => {
     try {
         const { email, password } = req.body;
 
+        let errors = [];
+        if (!email) errors.push("Email  Field is required");
+        if (!password) errors.push("Password Field is required");
+
+        if (errors.length > 0) {
+            return res.status(400).json({ success: false, message: errors });
+        }
+
         const user = await User.findOne({ email });
         if (!user) {
-            return res.status(404).json({ success: false, message: 'User Not Fount' });
+            return res.status(400).json({ success: false, message: 'User not found' });
         }
 
         const isMatch = await bcrypt.compare(password, user.password);
@@ -23,6 +31,7 @@ const login = async (req, res) => {
 
         res.status(200).json({
             success:true, 
+            message: 'Login successful',
             token, 
             user:{_id: user._id, name: user.name,  role: user.role}
         });

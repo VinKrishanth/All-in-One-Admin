@@ -30,7 +30,7 @@ export default function MainHome() {
         <div className="flex items-center space-x-8">
           <div className="flex items-center">
             <GraduationCap className="w-8 h-8 text-white" />
-            <span className="ml-2 text-2xl font-cursive text-white">Logo</span>
+            <span className="ml-2 text-2xl font-cursive text-white">Raavaanaa</span>
           </div>
           <div className="hidden sm:flex items-center space-x-6">
             {["Home Page", "Tutorials", "Categories"].map((item) => (

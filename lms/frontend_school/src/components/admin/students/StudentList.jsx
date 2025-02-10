@@ -111,7 +111,7 @@ export default function StudentList() {
         }
       }
     } catch (error) {
-      console.error("Error submitting student form:", error);
+      // console.error("Error submitting student form:", error);
 
       // Handling API response errors properly
       if (error.response && error.response.data) {

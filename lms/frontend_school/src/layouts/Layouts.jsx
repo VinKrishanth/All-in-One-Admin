@@ -1,4 +1,4 @@
-import { Routes, Route, BrowserRouter, Navigate } from 'react-router-dom'
+import { Routes, Route, BrowserRouter } from 'react-router-dom'
 import Login from '../pages/Login'
 import PrivateRoutes from '../utils/PrivateRoutes'
 import RoleBaseRoutes from '../utils/RoleBaseRoutes'
@@ -10,12 +10,14 @@ import AdminSummery from '../components/admin/AdminSummery'
 import TeacherList from '../components/admin/teachers/TeacherList'
 import StudentList from '../components/admin/students/StudentList'
 import Class from '../components/admin/Class'
+import Welcome from '../pages/Welcome'
+
 
 export default function Layouts() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Navigate to="/home" />}></Route>
+        <Route path="/" element={<Welcome />}></Route>
         <Route path="/home" element={<Home />}></Route>
         <Route path="/login" element={<Login />}></Route>
 
