@@ -7,11 +7,11 @@ import contactRoutes from "./routers/contactRoutes.js";
 import studentRouter from "./routers/studentRouter.js";
 
 const app = express()
-app.use(cors())
-// app.use(cors({
-//   origin: 'https://raavanaa-tutorial.vercel.app', 
-//   credentials: true, 
-// }))
+// app.use(cors())
+app.use(cors({
+  origin: 'https://raavanaa-tutorial.vercel.app', 
+  credentials: true, 
+}))
 app.use(express.json())
 app.use(express.static('public/uploads'))
 
