@@ -20,7 +20,7 @@ const Card = ({ title, subtitle, Icon, color, index,  }) => {
       animate="visible"
       custom={index} 
       whileHover={{ scale: 1.05, transition: { duration: 0.3 } }}
-      className={`flex justify-between items-center px-5 h-20  w-20 rounded-lg cursor-pointer transition-all duration-400 ease-linear bg-teal-50 hover:bg-teal-100 hover:scale-105 drop-shadow-md drop-shadow-sky-400`}
+      className={`flex justify-between  items-center px-5 h-20  w-20 rounded-lg cursor-pointer transition-all duration-400 ease-linear bg-teal-50 hover:bg-teal-100 hover:scale-105 drop-shadow-md drop-shadow-sky-400`}
     >
       <div className="space-y-0.5 text-center">
         <p className="text-sm font-normal tracking-wide capitalize">{title}</p>

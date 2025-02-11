@@ -5,6 +5,7 @@ import Logo from './Logo'
 import IconButton from "../button/IconButton";
 import { IoLogOut } from "react-icons/io5";
 import { useAuth } from "../../context/AuthContext";
+
 const Sidebar = ({navList = []}) => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const sidebarRef = useRef(null); 
@@ -46,7 +47,7 @@ const Sidebar = ({navList = []}) => {
         onClick={toggleSidebar}
       >
         <span className="sr-only">Open sidebar</span>
-        <HiMenu className="scale-[1.75]"/>
+        <HiMenu className="scale-[1.75] h-5 w-5 m-2"/>
       </button>
 
       {/* Backdrop for mobile */}

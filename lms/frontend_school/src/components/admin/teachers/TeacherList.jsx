@@ -40,7 +40,7 @@ export default function TeacherList() {
       >
         Teacher Management
       </motion.h1>
-      <StudentProfile />
+      {/* <StudentProfile /> */}
     </motion.div>
   );
 }

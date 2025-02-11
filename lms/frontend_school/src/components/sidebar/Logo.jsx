@@ -1,13 +1,14 @@
 import { motion } from "framer-motion";
 import RaavanaaLogo from "../../assets/logo/RaavanaaLogo.png";
 
+
 export default function AnimatedHeader() {
   return (
     <motion.div
       initial={{ opacity: 0, y: -20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
-      className="flex justify-center items-center py-6 border-b-2"
+      className="flex justify-center items-center py-6 border-b-2 relative"
     >
       <motion.div
         initial={{ scale: 0.8, opacity: 0 }}

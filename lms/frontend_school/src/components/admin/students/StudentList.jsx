@@ -7,6 +7,10 @@ import { motion } from "framer-motion";
 import View from "./View";
 import { createStudent, getStudents } from "../../../api/student/studentApi";
 import { toast } from "react-toastify";
+import { StudentsButton,  columns } from "../../../utils/StudentHelper";
+import DateTable from 'react-data-table-component';
+
+
 
 export default function StudentList() {
   const [filteredStudents, setFilteredStudents] = useState([]);
@@ -32,23 +36,21 @@ export default function StudentList() {
     const fetchStudents = async () => {
       try {
         const response = await getStudents();
+        let sno = 1;
         if (response.success && response.students) {
           const data = response.students.map((std) => ({
-            id: std._id,
+            id: `std${sno++}`,
             name: std.userId.name,
             email: std.userId.email,
             gender: std.gender,
-            fatherName: std.fatherName,
-            motherName: std.motherName,
-            dateOfBirth: std.dateOfBirth,
-            joinDate: std.joinDate,
+            dateOfBirth: new Date(std.dateOfBirth).toLocaleDateString(),
+            joinDate: new Date(std.joinDate).toLocaleDateString(),
             address: std.address,
-            contactNumber: std.contactNumber,
+            action: <StudentsButton _id={std._id} />,
           }));
 
           setFilteredStudents(data);
           setStudents(data);
-          console.log(data);
         } else {
           toast.error(response.message || "Failed to fetch students.");
         }
@@ -79,12 +81,27 @@ export default function StudentList() {
 
   const handleStudentSubmit = async (event) => {
     event.preventDefault();
-
+  
     try {
       const response = await createStudent(studentData);
-
+  
       if (response.success) {
         toast.success(response.message);
+  
+        const newStudent = {
+          id: `std${students.length + 1}`,
+          name: studentData.firstName + " " + studentData.lastName,
+          email: studentData.email,
+          gender: studentData.gender,
+          dateOfBirth: new Date(studentData.dateOfBirth).toLocaleDateString(),
+          joinDate: new Date(studentData.joinDate).toLocaleDateString(),
+          address: studentData.address,
+          action: <StudentsButton _id={response.student._id} />,
+        };
+  
+        setStudents((prev) => [...prev, newStudent]); // Update student list
+        setFilteredStudents((prev) => [...prev, newStudent]); // Update filtered list
+  
         setStudentData({
           firstName: "",
           lastName: "",
@@ -101,9 +118,9 @@ export default function StudentList() {
           contactNumber: "",
           profileImage: "",
         });
+  
         handleCloseModal();
       } else {
-        // Check if response.message contains an array of errors
         if (Array.isArray(response.message)) {
           response.message.forEach((err) => toast.error(err));
         } else {
@@ -111,9 +128,6 @@ export default function StudentList() {
         }
       }
     } catch (error) {
-      // console.error("Error submitting student form:", error);
-
-      // Handling API response errors properly
       if (error.response && error.response.data) {
         if (Array.isArray(error.response.data.message)) {
           error.response.data.message.forEach((err) => toast.error(err));
@@ -125,6 +139,21 @@ export default function StudentList() {
       }
     }
   };
+  
+  const handleFilterStudents = (e) => {
+    const searchText = e.target.value.toLowerCase();
+  
+    if (searchText.trim() === "") {
+      setFilteredStudents(students); 
+    } else {
+      const records = students.filter((std) => 
+        std.name.toLowerCase().includes(searchText)
+      );
+      setFilteredStudents(records);
+    }
+  };
+  
+  
 
   return (
     <motion.div
@@ -147,48 +176,77 @@ export default function StudentList() {
           label={"Add student"}
           placeholder={"Search student name"}
           onClick={handleAddStudent}
+          onChange={handleFilterStudents}
         />
-        <motion.table
-          className="w-full text-sm text-left text-gray-500 mt-8"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.5, delay: 0.3 }}
-        >
-          <thead className="text-xs text-gray-700 uppercase bg-gray-50 border-2 border-gray-200">
-            <tr>
-              <th className="px-6 py-3 uppercase border-2">SNo</th>
-              <th className="px-6 py-3 uppercase border-2">Student Name</th>
-              <th className="px-6 py-3 uppercase border-2">Email</th>
-              <th className="px-6 py-3 uppercase border-2"></th>
-              <th className="px-6 py-3 uppercase border-2">Deduction</th>
-              <th className="px-6 py-3 uppercase border-2">Total</th>
-              <th className="px-6 py-3 uppercase border-2">Pay Date</th>
-            </tr>
-          </thead>
-          <tbody>
-            {/* {filteredStudents.map((salary, index) => (
-              <motion.tr
-                key={salary._id}
-                className="bg-white border-b"
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: index * 0.1 }}
-              >
-                <td className="px-6 py-3">{index + 1}</td>
-                <td className="px-6 py-3">{salary.employeeId.employeeId}</td>
-                <td className="px-6 py-3">{salary.basicSalary}</td>
-                <td className="px-6 py-3">{salary.allowances}</td>
-                <td className="px-6 py-3">{salary.deductions}</td>
-                <td className="px-6 py-3">{salary.netSalary}</td>
-                <td className="px-6 py-3">
-                  {new Date(salary.payDate).toLocaleDateString()}
-                </td>
-              </motion.tr>
-            ))} */}
-          </tbody>
-        </motion.table>
+        <div className="overflow-x-auto">
+          {/* <motion.table
+            className="min-w-full text-sm text-left text-gray-500 mt-8 border-collapse"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+          >
+            <thead className="text-xs text-gray-700 uppercase bg-gray-50 border-2 border-gray-200">
+              <tr>
+                <th className="px-6 py-3 border-2 whitespace-nowrap hover:bg-gray-200">
+                  SNo
+                </th>
+                <th className="px-6 py-3 border-2 whitespace-nowrap hover:bg-gray-200">
+                  Name
+                </th>
+                <th className="px-6 py-3 border-2 whitespace-nowrap hover:bg-gray-200">
+                  Email
+                </th>
+                <th className="px-6 py-3 border-2 whitespace-nowrap hover:bg-gray-200">
+                  Gender
+                </th>
+                <th className="px-6 py-3 border-2 whitespace-nowrap hover:bg-gray-200">
+                  Date of Birth
+                </th>
+                <th className="px-6 py-3 border-2 whitespace-nowrap hover:bg-gray-200">
+                  Address
+                </th>
+                <th className="px-6 py-3 border-2 whitespace-nowrap hover:bg-gray-200">
+                  Action
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              {filteredStudents.map((std, index) => (
+                <motion.tr
+                  key={std.id}
+                  className="bg-white border-b"
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: index * 0.1 }}
+                >
+                  <td className="px-6 py-3 border-2 break-words hover:bg-gray-100">
+                    {std.id}
+                  </td>
+                  <td className="px-6 py-3 border-2 break-words hover:bg-gray-100">
+                    {std.name}
+                  </td>
+                  <td className="px-6 py-3 border-2 break-words hover:bg-gray-100">
+                    {std.email}
+                  </td>
+                  <td className="px-6 py-3 border-2 break-words hover:bg-gray-100">
+                    {std.gender}
+                  </td>
+                  <td className="px-6 py-3 border-2 break-words hover:bg-gray-100">
+                    {std.dateOfBirth}
+                  </td>
+                  <td className="px-6 py-3 border-2 break-words hover:bg-gray-100">
+                    {std.address}
+                  </td>
+                  <td className="px-6 py-3 border-2 break-words hover:bg-gray-100">
+                    {std.action}
+                  </td>
+                </motion.tr>
+              ))}
+            </tbody>
+          </motion.table> */}
+          <DateTable columns={columns} data={filteredStudents}  pagination/>
+        </div>
       </div>
-      <div>Name {students && students.email}</div>
       <Modal
         isOpen={isModalOpen}
         customStyles={true}
