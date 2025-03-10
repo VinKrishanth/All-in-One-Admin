@@ -5,7 +5,6 @@ import authRouter from "./routers/authRouter.js"
 import classRoutes from "./routers/classRoutes.js";
 import contactRoutes from "./routers/contactRoutes.js";
 import studentRouter from "./routers/studentRouter.js";
-import noticeRouter from "./routers/noticeRoutes.js";
 
 const app = express()
 // app.use(cors())
