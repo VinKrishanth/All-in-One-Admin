@@ -5,6 +5,7 @@ import authRouter from "./routers/authRouter.js"
 import classRoutes from "./routers/classRoutes.js";
 import contactRoutes from "./routers/contactRoutes.js";
 import studentRouter from "./routers/studentRouter.js";
+import noticeRouter from "./routers/noticeRoutes.js";
 
 const app = express()
 // app.use(cors())
@@ -23,6 +24,7 @@ app.use('/api/auth', authRouter)
 app.use("/api/classes", classRoutes);
 app.use("/api/contact", contactRoutes);
 app.use("/api/student", studentRouter);
+app.use('/api/notices', noticeRouter); 
 
 
 const PORT = process.env.PORT || 5000;

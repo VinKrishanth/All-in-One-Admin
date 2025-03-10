@@ -31,12 +31,12 @@ export default function Welcome() {
               <div className="bg-yellow-400 p-2 sm:p-2 rounded-md ring-2 ring-yellow-400 cursor-pointer">
                 <motion.div
                   className="w-14 h-14 rounded overflow-hidden ring-2 ring-blue-400 flex items-center justify-center bg-white"
-                  animate={{ scale: [1, 1.05, 1] }} // Scale up and down
+                  animate={{ scale: [1, 1.05, 1] }} 
                   transition={{
                     duration: 1.5,
                     repeat: Infinity,
                     repeatType: "mirror",
-                  }} // Infinite smooth animation
+                  }} 
                 >
                   <img
                     src={RaavanaaLogo}

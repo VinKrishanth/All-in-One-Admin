@@ -11,6 +11,7 @@ import TeacherList from '../components/admin/teachers/TeacherList'
 import StudentList from '../components/admin/students/StudentList'
 import Class from '../components/admin/Class'
 import Welcome from '../pages/Welcome'
+import Notice from '../components/admin/notice/Notice'
 
 
 export default function Layouts() {
@@ -34,7 +35,7 @@ export default function Layouts() {
           <Route path={"/admin-dashboard/student"}  element={<StudentList />}> </Route>
           <Route path={"/admin-dashboard/library"}  element={<StudentList />}> </Route>
           <Route path={"/admin-dashboard/exam"}  element={<StudentList />}> </Route>
-          <Route path={"/admin-dashboard/notice"}  element={<StudentList />}> </Route>
+          <Route path={"/admin-dashboard/notice"}  element={<Notice />}> </Route>
           <Route path={"/admin-dashboard/setting"}  element={<StudentList />}> </Route>
           <Route path={"/admin-dashboard/Attendance"}  element={<StudentList />}> </Route>
           <Route path={"/admin-dashboard/class"}  element={<Class />}> </Route>

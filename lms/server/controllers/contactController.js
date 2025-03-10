@@ -32,15 +32,20 @@ if (!process.env.EMAIL_USER || !process.env.EMAIL_PASS || !process.env.RECEIVER_
 export const sendContactEmail = async (req, res) => {
   try {
     const { name, email, message } = req.body;
+    let errors = [];
 
-    if (!name ) {
-      return res.status(400).json({ success: false, message: "Name field is required" });
+    if (!name) {
+      errors.push("Name field is required");
     }
     if (!email) {
-      return res.status(400).json({ success: false, message: "Email field is required" });
+      errors.push("Email field is required");
     }
     if (!message) {
-      return res.status(400).json({ success: false, message: "Massage field is required" });
+      errors.push("Message field is required");
+    }
+
+    if (errors.length > 0) {
+      return res.status(400).json({ success: false, errors });
     }
 
     // Save Contact Data to Database

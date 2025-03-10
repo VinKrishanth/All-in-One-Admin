@@ -239,3 +239,44 @@ export const cardDataStudent = [
     color: "text-green-600",
   },
 ];
+
+
+import { Home, Info, BookOpen, Calendar, ShoppingBag, PenTool, Mail } from "lucide-react";
+
+export const navigationList = [
+  {
+    title: "Home",
+    id: "raavanaa",
+    icon: <Home size={20} />,
+  },
+  {
+    title: "About Us",
+    id: "aboutAs",
+    icon: <Info size={20} />,
+  },
+  {
+    title: "Courses",
+    id: "courses",
+    icon: <BookOpen size={20} />,
+  },
+  {
+    title: "Events",
+    id: "events",
+    icon: <Calendar size={20} />,
+  },
+  {
+    title: "Shop",
+    id: "shop",
+    icon: <ShoppingBag size={20} />,
+  },
+  {
+    title: "Blog",
+    id: "blog",
+    icon: <PenTool size={20} />,
+  },
+  {
+    title: "Contact",
+    id: "contact",
+    icon: <Mail size={20} />,
+  }
+];
